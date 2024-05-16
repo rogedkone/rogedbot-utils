@@ -3,10 +3,12 @@ import store from '@store/index';
 import Bot from '@bot/index';
 
 export const pushToDelete = (chat_id: number, id: number) => {
-  store.bot_messages.push({
-    chat_id,
-    id,
-  });
+  setTimeout(() => {
+    store.bot_messages.push({
+      chat_id,
+      id,
+    });
+  }, 1000 * 60 * 3);
 };
 
 export const removeFromDelete = (msg: { chat_id: number, id: number }) => {

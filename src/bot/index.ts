@@ -1,7 +1,7 @@
 import { Telegraf } from 'telegraf';
 import constants from '@utils/constants';
+import { helldivers, weather } from './commands';
 import { geolocation } from './events';
-import { weather } from './commands';
 import { weather as weather_cb } from './actions';
 import { delete_bot_messages } from './workers';
 
@@ -11,7 +11,7 @@ const work = () => {
   setTimeout(() => {
     delete_bot_messages();
     work();
-  }, 180000);
+  }, 1000 * 60 * 1.1);
 };
 
 Bot.launch(() => {
@@ -22,7 +22,7 @@ Bot.launch(() => {
 // actions
 Bot.use(weather_cb);
 // commands
-Bot.use(weather);
+Bot.use(weather, helldivers);
 // events
 Bot.use(geolocation);
 
