@@ -17,7 +17,6 @@ export const removeFromDelete = (msg: { chat_id: number, id: number }) => {
 };
 
 export default () => {
-  console.log('search old messages', store.bot_messages);
   if (store.bot_messages.length === 0) return;
   for (const msg of store.bot_messages) {
     Bot.telegram.deleteMessage(msg.chat_id, msg.id)
