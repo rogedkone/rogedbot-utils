@@ -1,4 +1,4 @@
-import { MajorOrder } from '@integrations/helldivers2/types';
+import { MajorOrder } from '@api/helldivers2/types';
 
 export default (order: MajorOrder) => {
   const done = order.progress.filter((isDone) => isDone === 1).length;

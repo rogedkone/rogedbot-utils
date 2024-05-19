@@ -1,5 +1,5 @@
-import { Planets, StatusPlanet } from '@integrations/helldivers2/types';
-import { factionParse } from '@integrations/helldivers2/utils';
+import { Planets, StatusPlanet } from '@api/helldivers2/types';
+import { factionParse } from '@api/helldivers2/utils';
 
 export default (planets: StatusPlanet[], planetsInfo: Planets) => {
   const earth = planets.filter((planet) => planet.owner === 1);

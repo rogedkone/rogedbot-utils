@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import store from '@store/index';
-import Bot from '@bot/index';
+import Bot from '@bots/telegram';
 
 export const pushToDelete = (chat_id: number, id: number) => {
   setTimeout(() => {

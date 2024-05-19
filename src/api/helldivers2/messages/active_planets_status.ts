@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
-import { ActivePlanet } from '@integrations/helldivers2/types';
-import { factionParse } from '@integrations/helldivers2/utils';
+import { ActivePlanet } from '@api/helldivers2/types';
+import { factionParse } from '@api/helldivers2/utils';
 
 const generateDefence = (percent: number) => {
   const msg = [];

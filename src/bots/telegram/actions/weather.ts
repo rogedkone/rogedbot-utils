@@ -1,6 +1,6 @@
 import { Composer } from 'telegraf';
-import cities from '@integrations/openweather/cities';
-import { forecast } from '@integrations/openweather/messages';
+import cities from '@api/openweather/cities';
+import { forecast } from '@api/openweather/messages';
 import { pushToDelete } from '../workers/delete_bot_messages';
 
 export default Composer.action(Object.keys(cities).map((city) => `weather_${city}`), async (ctx, next) => {

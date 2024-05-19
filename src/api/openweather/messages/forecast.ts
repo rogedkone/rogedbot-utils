@@ -1,6 +1,6 @@
-import { ApiOpenWeather } from '@integrations/index';
+import { ApiOpenWeather } from '@api/index';
 import dayjs from 'dayjs';
-import { Forecast } from '@integrations/openweather/types';
+import { Forecast } from '@api/openweather/types';
 import { openIconToEmoji, timeToHuman } from '../utils';
 
 const generateForecastMessage = (forecast: Forecast) => {

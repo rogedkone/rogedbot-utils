@@ -1,5 +1,5 @@
 import { Composer, Markup } from 'telegraf';
-import cities from '@integrations/openweather/cities';
+import cities from '@api/openweather/cities';
 import { pushToDelete } from '../workers/delete_bot_messages';
 
 export default Composer.command('weather', async (ctx, next) => {

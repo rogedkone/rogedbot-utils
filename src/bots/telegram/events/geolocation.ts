@@ -1,6 +1,6 @@
 import { Composer } from 'telegraf';
 import { message } from 'telegraf/filters';
-import { forecast } from '@integrations/openweather/messages';
+import { forecast } from '@api/openweather/messages';
 import { pushToDelete } from '../workers/delete_bot_messages';
 
 export default Composer.on(message('location'), async (ctx, next) => {

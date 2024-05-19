@@ -108,8 +108,9 @@
     "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
       "@/*": ["./*"],
-      "@bot/*": ["bot/*"],
+      "@bots/*": ["bots/*"],
       "@store/*": ["store/*"],
+      "@api/*": ["api/*"],
       "@integrations/*": ["integrations/*"],
       "@utils/*": ["utils/*"],
   },
