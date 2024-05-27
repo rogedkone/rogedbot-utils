@@ -2,21 +2,28 @@ import { Composer } from 'telegraf';
 import ApiHellDivers2, { getMajorPlanetsId } from '@api/helldivers2';
 import { inactive_planets_status, major_order } from '@api/helldivers2/messages';
 import major_planets_status from '@api/helldivers2/messages/active_planets_status';
-import dayjs from 'dayjs';
 import { pushToDelete } from '../workers/delete_bot_messages';
 
 export default Composer.command('helldivers', async (ctx, next) => {
   const hellDivers2Client = new ApiHellDivers2();
 
   const orders = await hellDivers2Client.major_orders;
-  const orderType = orders[0].setting.tasks[0].type;
+
+  const reply = [];
+
+  if (orders.length === 0) {
+    await ctx.deleteMessage();
+    const response = await ctx.reply('Главных приказов не обнаружено');
+    pushToDelete(response.chat.id, response.message_id);
+    return false;
+  }
+
   const majorIds = getMajorPlanetsId(orders[0]);
+  const orderType = orders[0].setting.tasks[0].type;
   const activePlanets = await hellDivers2Client.active_planets;
   const activePlanetsIds = activePlanets.map(({ planetIndex }) => planetIndex);
   const planetStatuses = await hellDivers2Client.planets_status;
   const planetsInfo = await hellDivers2Client.planets;
-
-  const reply = [];
 
   if (orderType === 3) {
     const majorOrder = orders[0];

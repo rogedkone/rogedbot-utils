@@ -1,6 +1,7 @@
 import { MajorOrder } from '@api/helldivers2/types';
 
-export const getMajorPlanetsId = (order: MajorOrder) => order.setting.tasks
+// @ts-ignore
+export const getMajorPlanetsId = (order: MajorOrder) => order?.setting.tasks
   .map(({ values }) => values[2]);
 
 export const factionParse = (faction: 'Terminids' | 'Automatons') => ({

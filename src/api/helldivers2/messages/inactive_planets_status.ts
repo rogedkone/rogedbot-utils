@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { Planets, StatusPlanet } from '@api/helldivers2/types';
 import { factionParse } from '@api/helldivers2/utils';
 
