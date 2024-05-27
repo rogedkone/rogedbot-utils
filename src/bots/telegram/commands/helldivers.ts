@@ -6,13 +6,13 @@ import { pushToDelete } from '../workers/delete_bot_messages';
 
 export default Composer.command('helldivers', async (ctx, next) => {
   const hellDivers2Client = new ApiHellDivers2();
+  await ctx.deleteMessage();
 
   const orders = await hellDivers2Client.major_orders;
 
   const reply = [];
 
   if (orders.length === 0) {
-    await ctx.deleteMessage();
     const response = await ctx.reply('Главных приказов не обнаружено');
     pushToDelete(response.chat.id, response.message_id);
     return false;
@@ -42,7 +42,6 @@ export default Composer.command('helldivers', async (ctx, next) => {
   reply.push(`До завершения приказа: <b>${Math.floor(orders[0].expiresIn / 86400)}д ${Math.floor(orders[0].expiresIn / 3600 % 24)}ч ${Math.floor(orders[0].expiresIn / 3600 / 24 % 60)}м</b>`);
   reply.join('\n');
 
-  await ctx.deleteMessage();
   const response = await ctx.reply(reply.join('\n'), { parse_mode: 'HTML' });
   pushToDelete(response.chat.id, response.message_id);
 
